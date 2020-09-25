@@ -9,9 +9,10 @@ class GpioApp(PiApplication):
         # 1. LED
         # 2. 버튼
         # 3. 버튼 이벤트
+        menu.add_menu("1. LED",LedEx()) # action = LedEx()와 같음
         menu.add_menu()
         menu.add_menu()
-        menu.add_menu()
+
 if __name__ == "__main__":
     app = GpioApp()
     app.run()
