@@ -15,13 +15,13 @@ class PwmEx:
             while 1:
                 # fade in
                 for dc in range(0,101,5):
-                    self.p.changeDutyCycle(dc)
+                    self.p.ChangeDutyCycle(dc)
                     time.sleep(0.1)
 
                 # fade out
                 for dc in range(100,-1,-5):
-                    self.p.changeDutyCycle(dc)
+                    self.p.ChangeDutyCycle(dc)
                     time.sleep(0.1)
-                    
+
         except KeyboardInterrupt:
             self.p.stop()
