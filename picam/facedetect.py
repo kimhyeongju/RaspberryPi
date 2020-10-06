@@ -1,5 +1,4 @@
 import numpy as np
-from cam import USBCam
 import cv2
 
 FACE_WIDTH = 200

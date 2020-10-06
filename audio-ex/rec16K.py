@@ -24,6 +24,7 @@ def record(record_seconds=5):
     for i in range(0, int(RATE / CHUNK * record_seconds)):
         data = stream.read(CHUNK, exception_on_overflow=False)
         frames.append(data)
+
     print("Recording is finished.")
     stream.stop_stream()
     stream.close()
@@ -36,19 +37,27 @@ def convertTo16K(file):     # 아래 wavfile이 넘어옴
     sound = AudioSegment.from_file(file)
     sound = sound.set_frame_rate(16000)     # frame rate를 160000으로 설정
     rec_data = io.BytesIO()
-    sound.export
-    (rec_data, format="wav")    # rec_data -> 16K wave
+    sound.export(rec_data, format="wav")    # rec_data -> 16K wave
     return rec_data
 
 # wav 파일 저장
 def getWav(frames):
     wavfile = io.BytesIO()
-    wf = wave.open
-    (wavfile, 'wb')
+    wf = wave.open(wavfile, 'wb')
     wf.setnchannels(CHANNELS)
     wf.setsampwidth(SAMPLE_WIDTH)
     wf.setframerate(RATE)
-    wf.writeframes
-    (b''.join(frames))
+    wf.writeframes(b''.join(frames))
     wavfile.seek(0)
     return wavfile
+
+if __name__ == "__main__":
+    audio_data = record()
+    wav_data = getWav(audio_data)
+    wav_data = convertTo16K(wav_data)
+    # wav_data 처리
+
+
+
+
+# https://audiosegment.readthedocs.io/en/latest/audiosegment.html
