@@ -9,8 +9,8 @@ client_socket.connect(("00:18:91:D7:A1:D1", 1))
 
 try:
     while True: 
-        msg = input("Send : ") + LINE_END 
-        client_socket.send(msg) 	# 전송
+        # msg = input("Send : ") + LINE_END 
+        # client_socket.send(msg) 	# 전송
 
         # msg = client_socket.recv(1024)
         msg = client_socket.readline()
